@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
 interface ButtonProps {
   children: ReactNode;
@@ -11,7 +12,7 @@ interface ButtonProps {
 export const Button = ({ children, className, appName }: ButtonProps) => {
   return (
     <button
-      className={className}
+      className={twMerge("px-4 py-2 bg-primary text-secondary", className)}
       onClick={() => alert(`Hello from your ${appName} app!`)}
     >
       {children}

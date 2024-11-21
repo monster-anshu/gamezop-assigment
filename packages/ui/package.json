@@ -13,6 +13,7 @@
   "devDependencies": {
     "@repo/config-eslint": "workspace:*",
     "@repo/config-typescript": "workspace:*",
+    "@repo/config-tailwind": "workspace:*",
     "typescript": "5.5.4"
   },
   "dependencies": {
