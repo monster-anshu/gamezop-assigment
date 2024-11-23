@@ -46,6 +46,8 @@ const config: Omit<Config, "content"> = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+
+        footer: "hsl(var(--footer))",
       },
     },
   },

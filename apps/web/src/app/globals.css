@@ -24,9 +24,12 @@
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
     --radius: 0.5rem;
+
+    --footer: 0 0% 100%;
   }
-  .dark {
-    --background: 0 0% 3.9%;
+
+  html.dark {
+    --background: 238, 33%, 15%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -45,6 +48,8 @@
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
+
+    --footer: 238, 52%, 10%;
   }
 }
 
