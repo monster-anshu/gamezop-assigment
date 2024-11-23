@@ -2,6 +2,7 @@ import Image from "next/image";
 import React, { FC } from "react";
 import ThemeToggle from "./ThemeToggle";
 import { LOGO } from "@web-const/images";
+import LanguageSelector from "./LanguageSelector";
 
 type IFooterProps = {};
 
@@ -20,6 +21,7 @@ const Footer: FC<IFooterProps> = () => {
         </div>
         <div>
           <ThemeToggle />
+          <LanguageSelector />
         </div>
       </div>
     </footer>
