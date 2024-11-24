@@ -5,6 +5,7 @@ import { ThemeProvider } from "@web-providers/ThemeProvider";
 import Footer from "@web-components/Footer";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
+import Header from "@web-components/Header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,17 +37,13 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <head />
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="dark">
           <NextIntlClientProvider messages={messages}>
+            <Header />
             {children}
+            <Footer />
           </NextIntlClientProvider>
         </ThemeProvider>
-        <Footer />
       </body>
     </html>
   );

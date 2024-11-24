@@ -1,5 +1,10 @@
 {
+  "Header": {
+    "search": {
+      "placeholder": "Search for games"
+    }
+  },
   "Hero": {
-    "title": "Hello world de!"
+    "title": "Hello world!"
   }
 }
