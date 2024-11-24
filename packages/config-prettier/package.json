@@ -1,0 +1,17 @@
+{
+  "name": "@repo/config-prettier",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./prettier-config.json",
+  "devDependencies": {
+    "@repo/config-typescript": "workspace:*"
+  },
+  "dependencies": {
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.9"
+  }
+}

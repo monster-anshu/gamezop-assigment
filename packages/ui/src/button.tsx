@@ -12,7 +12,7 @@ interface ButtonProps {
 export const Button = ({ children, className, appName }: ButtonProps) => {
   return (
     <button
-      className={twMerge("px-4 py-2 bg-primary text-secondary", className)}
+      className={twMerge("bg-primary text-secondary px-4 py-2", className)}
       onClick={() => alert(`Hello from your ${appName} app!`)}
     >
       {children}
