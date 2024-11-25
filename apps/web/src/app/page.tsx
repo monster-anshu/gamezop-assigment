@@ -2,6 +2,8 @@ import { GameApi } from "@web-api/games";
 import GameCarousel from "@web-components/GameCarousel";
 import HeroGrid from "@web-components/HeroGrid";
 
+export const dynamic = "force-static";
+
 export default async function Home() {
   const gamesWithCatgories = await GameApi.withCategories();
   return (
