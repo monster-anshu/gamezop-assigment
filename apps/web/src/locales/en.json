@@ -4,7 +4,7 @@
       "placeholder": "Search for games"
     }
   },
-  "Hero": {
-    "title": "Hello world!"
+  "GameCarousel": {
+    "view-all": "View all"
   }
 }

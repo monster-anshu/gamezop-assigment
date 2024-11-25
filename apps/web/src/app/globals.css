@@ -5,7 +5,7 @@
 @layer base {
   :root {
     --background: 0 0% 90%;
-    --foreground: 0, 0%, 58%;
+    --foreground: 0 0% 10%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
@@ -30,13 +30,13 @@
 
   html.dark {
     --background: 238 33% 15%;
-    --foreground: 238 33% 65%;
+    --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
     --primary: 227 25% 11%;
-    --primary-foreground: 0 0% 9%;
+    --primary-foreground: 238 33% 65%;
     --secondary: 237 33% 22%;
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 14.9%;
@@ -64,4 +64,8 @@
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.swiper-slide {
+  width: auto !important;
 }

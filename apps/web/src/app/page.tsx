@@ -1,13 +1,18 @@
-import { Button } from "@repo/ui/button";
-import { useTranslations } from "next-intl";
+import { GameApi } from "@web-api/games";
+import GameCarousel from "@web-components/GameCarousel";
+import HeroGrid from "@web-components/HeroGrid";
 
-export default function Home() {
-  const t = useTranslations("Hero");
-
+export default async function Home() {
+  const gamesWithCatgories = await GameApi.withCategories();
   return (
-    <div>
-      <h1>{t("title")}</h1>
-      <Button appName="web">Click me</Button>
-    </div>
+    <main className="my-4 space-y-6">
+      <HeroGrid />
+
+      {Object.entries(gamesWithCatgories).map(([category, games]) => {
+        return (
+          <GameCarousel key={category} category={category} games={games} />
+        );
+      })}
+    </main>
   );
 }

@@ -1,7 +1,5 @@
 import { GameApi } from "@web-api/games";
-import { LOGO } from "@web-const/images";
 import { getIconForCategory } from "@web-utils/icon";
-import Image from "next/image";
 import React, { FC } from "react";
 import Logo from "./Logo";
 import SearchBox from "./header/SearchBox";
@@ -9,7 +7,8 @@ import SearchBox from "./header/SearchBox";
 type IHeaderProps = {};
 
 const Header: FC<IHeaderProps> = async () => {
-  const categories = await GameApi.categories();
+  const gamesWithCatgories = await GameApi.withCategories();
+  const categories = Object.keys(gamesWithCatgories);
   return (
     <header className="bg-secondary py-6">
       <div className="container grid grid-cols-[auto_1fr] items-center gap-4 md:grid-cols-[auto_1fr_auto]">
@@ -26,7 +25,7 @@ const Header: FC<IHeaderProps> = async () => {
                 <span className="text-primary dark:text-yellow-200">
                   {getIconForCategory(category)}
                 </span>
-                <span className="text-primary whitespace-nowrap text-sm font-medium dark:text-white">
+                <span className="text-primary dark:text-foreground whitespace-nowrap text-sm font-medium">
                   {category}
                 </span>
               </button>

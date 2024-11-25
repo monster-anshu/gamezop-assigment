@@ -46,7 +46,7 @@ const SearchBox: FC<ISearchBoxProps> = ({ isMobile }) => {
             className="w-44 bg-transparent px-1 py-2 text-sm focus:outline-0"
           />
           <button
-            className="bg-secondary rounded-full p-1 dark:text-white"
+            className="bg-secondary rounded-full p-1"
             onClick={() => setIsOpen(false)}
           >
             <RxCross2 size={16} />
@@ -54,10 +54,13 @@ const SearchBox: FC<ISearchBoxProps> = ({ isMobile }) => {
         </div>
       ) : (
         <button
-          className="bg-primary rounded-full p-2 text-white"
+          className="bg-primary rounded-full p-2"
           onClick={() => setIsOpen((curr) => !curr)}
         >
-          <CiSearch size={20} />
+          <CiSearch
+            size={20}
+            className="text-background dark:text-foreground"
+          />
         </button>
       )}
       <Image

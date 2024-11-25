@@ -47,7 +47,7 @@ const Footer: FC<IFooterProps> = () => {
           </div>
         </div>
 
-        <hr className="border-foreground my-4" />
+        <hr className="border-primary-foreground my-4" />
 
         <div>
           {linkes.map((link) => (
@@ -62,7 +62,7 @@ const Footer: FC<IFooterProps> = () => {
             </Link>
           ))}
         </div>
-        <p className="text-foborder-foreground pt-2 text-sm">
+        <p className="pt-2 text-sm">
           Gamezop is a plug-and-play gaming platform that any app or website can
           integrate to bring casual gaming for its users. Gamezop also operates
           Quizzop, a quizzing platform, that digital products can add as a
@@ -91,10 +91,8 @@ const Footer: FC<IFooterProps> = () => {
           </span>
         </p>
       </div>
-      <hr className="border-foreground my-4" />
-      <div className="text-foborder-foreground container text-sm">
-        Property ID: cfuucl7YgA
-      </div>
+      <hr className="border-primary-foreground my-4" />
+      <div className="container text-sm">Property ID: cfuucl7YgA</div>
     </footer>
   );
 };
