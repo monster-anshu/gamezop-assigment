@@ -9,8 +9,8 @@ const InstallationCarousel: FC<IInstallationCarouselProps> = () => {
   return (
     <div className="container">
       <Carousel>
-        <PushNotification />
         <PwaInstallation />
+        <PushNotification />
       </Carousel>
     </div>
   );

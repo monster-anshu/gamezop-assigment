@@ -36,7 +36,7 @@ const Footer: FC<IFooterProps> = () => {
   return (
     <footer className="bg-footer py-6">
       <div className="container">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <div>
             <Logo size="sm" />
           </div>

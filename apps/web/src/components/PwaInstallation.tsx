@@ -4,10 +4,11 @@ import React, { FC, useEffect, useRef } from "react";
 
 type IPwaInstallationProps = {};
 
+const aspectRatio = 650 / 256;
+
 const PwaInstallation: FC<IPwaInstallationProps> = () => {
   const t = useTranslations("Installation.pwa");
   const installEvent = useRef<null | Event>(null);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const handleClick = async () => {
     const installPrompt = installEvent.current;
@@ -36,7 +37,7 @@ const PwaInstallation: FC<IPwaInstallationProps> = () => {
 
     const listener = (e: Event) => {
       installEvent.current = e;
-      // e.preventDefault();
+      e.preventDefault();
     };
 
     window.addEventListener("beforeinstallprompt", listener);
@@ -47,27 +48,35 @@ const PwaInstallation: FC<IPwaInstallationProps> = () => {
   }, []);
 
   return (
-    <div className="relative h-64 w-[650px] overflow-hidden rounded-2xl">
+    <div
+      className="relative h-32 overflow-hidden rounded-2xl md:h-64"
+      style={{
+        aspectRatio,
+      }}
+    >
+      <div className="absolute left-4 top-4 text-white md:left-10 md:top-10">
+        <p className="font-bold md:text-3xl">{t("title")}</p>
+        <p className="font-medium md:text-2xl">{t("subTitle")}</p>
+        <button
+          onClick={handleClick}
+          className="mt-5 rounded-3xl bg-yellow-300 px-6 py-1 font-bold text-orange-600 md:px-8 md:text-xl"
+        >
+          {t("buttonLabel")}
+        </button>
+      </div>
       <video
-        src="/videos/a2hs-video.mp4"
         poster="/images/a2hs-bg.png"
         className="w-full"
         autoPlay
         playsInline
         loop
-        onLoad={() => videoRef.current?.play()}
-        ref={videoRef}
-      />
-      <div className="absolute left-10 top-10 text-white">
-        <p className="text-3xl font-bold">{t("title")}</p>
-        <p className="text-2xl font-medium">{t("subTitle")}</p>
-        <button
-          onClick={handleClick}
-          className="mt-5 rounded-3xl bg-orange-600 px-8 py-1 text-xl font-bold"
-        >
-          {t("buttonLabel")}
-        </button>
-      </div>
+        muted
+        ref={(videoElement) => {
+          videoElement?.play();
+        }}
+      >
+        <source src="/videos/a2hs-video.mp4" type="video/mp4" />
+      </video>
     </div>
   );
 };

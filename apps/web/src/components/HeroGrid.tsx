@@ -10,8 +10,8 @@ const HeroGrid: FC<IHeroGridProps> = async () => {
   const images = await GameApi.heroImages();
 
   return (
-    <div className="container">
-      <div className="bg-secondary border-primary-foreground grid max-w-5xl grid-cols-7 grid-rows-3 gap-4 rounded-2xl border p-4">
+    <div className="md:container">
+      <div className="bg-secondary border-primary-foreground grid max-w-5xl grid-cols-7 grid-rows-3 gap-1 md:gap-4 md:rounded-2xl md:border md:p-4">
         {images.map((image, index) => {
           return (
             <div
@@ -23,7 +23,11 @@ const HeroGrid: FC<IHeroGridProps> = async () => {
                   : "col-span-1 row-span-1"
               )}
             >
-              <img src={image} alt="" className="w-full rounded-xl" />
+              <img
+                src={image}
+                alt=""
+                className="w-full rounded md:rounded-xl"
+              />
             </div>
           );
         })}

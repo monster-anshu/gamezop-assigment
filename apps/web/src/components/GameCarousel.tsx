@@ -15,15 +15,15 @@ type IGameCarouselProps = {
 const GameCarousel: FC<IGameCarouselProps> = ({ category, games }) => {
   const t = useTranslations("GameCarousel");
   return (
-    <div className="container">
-      <div className="bg-secondary border-primary-foreground rounded-2xl border p-4">
-        <div className="mb-6 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-xl font-semibold">
+    <div className="md:container">
+      <div className="md:bg-secondary border-primary-foreground rounded-2xl md:border md:p-4">
+        <div className="mb-6 flex items-center justify-between px-3 md:px-0">
+          <div className="flex items-center gap-2 px-2 text-xl font-semibold">
             {getIconForCategory(category)}
             <p>{category}</p>
           </div>
           <div>
-            <div className="flex items-center gap-2 text-xl font-semibold uppercase">
+            <div className="flex items-center gap-2 font-semibold uppercase md:text-xl">
               <p className="text-primary dark:text-foreground">
                 {t("view-all")}
               </p>
@@ -41,18 +41,18 @@ const GameCarousel: FC<IGameCarouselProps> = ({ category, games }) => {
           <Carousel>
             {games.map((game, index) => {
               return (
-                <React.Fragment key={index}>
+                <div className="relative w-40" key={index}>
                   <Image
                     src={game.image}
                     alt={game.name}
-                    width={188}
-                    height={188}
-                    className="rounded-2xl"
+                    width={176}
+                    height={176}
+                    className="mx-auto h-40 w-40 rounded-2xl md:h-44 md:w-44"
                   />
-                  <p className="mt-2 text-center text-lg font-medium">
+                  <p className="mt-2 line-clamp-1 text-center text-lg font-medium">
                     {game.name}
                   </p>
-                </React.Fragment>
+                </div>
               );
             })}
           </Carousel>
