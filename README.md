@@ -1,81 +1,34 @@
-# Turborepo starter
+# What's Inside?
 
-This is an official starter Turborepo.
+This Turborepo includes the following packages and applications:
 
-## Using this example
+## Apps and Packages
 
-Run the following command:
+- **`docs`**: A [Next.js](https://nextjs.org/) app, serving as the main documentation platform.
+- **`web`**: A [Next.js](https://nextjs.org/) app for admin-related functionalities.
+- **`@repo/ui`**: A shared React component library used by both `web` and `docs` applications.
+- **`@repo/config-eslint`**: `eslint` configurations.
+- **`@repo/config-typescript`**: Shared `tsconfig.json` configurations used throughout the monorepo.
+- **`@repo/config-prettier`**: Common configurations for code formatting.
+- **`@repo/config-tailwind`**: Tailwind CSS configuration shared between the UI library and apps.
 
-```sh
-npx create-turbo@latest
-```
+All packages and applications are built using [TypeScript](https://www.typescriptlang.org/).
 
-## What's inside?
+---
 
-This Turborepo includes the following packages/apps:
+## `apps/web`
 
-### Apps and Packages
+The `apps/web` directory contains the main application for the Gamezop assignment. This is a [Next.js](https://nextjs.org/) application with the following features:
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/config-eslint`: `eslint` configurations (includes `config-eslint-next` and `config-eslint-prettier`)
-- `@repo/config-typescript`: `tsconfig.json`s used throughout the monorepo
+1. **Styling**: Tailwind CSS for a modern, utility-first approach.
+2. **Internationalization**: Support for English, Hindi, and German languages.
+3. **Theming**: Includes both dark and light mode themes.
+4. **Responsive Design**: Fully optimized for various screen sizes.
+5. **PWA Support**: Progressive Web App features enabled for enhanced performance and offline access.
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+---
 
-### Utilities
+## Deployment and Preview
 
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+The main application is deployed on Vercel and can be accessed here:  
+[https://gamezop.himanshu-gunwant.com](https://gamezop.himanshu-gunwant.com)
