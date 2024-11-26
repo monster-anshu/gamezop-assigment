@@ -138,9 +138,9 @@ async function dynamicCaching(request) {
 }
 
 self.addEventListener("fetch", (event) => {
+  return;
   const { request } = event;
   event.respondWith(dynamicCaching(request));
-  return;
   const url = new URL(request.url);
   if (url.pathname.startsWith("/api")) {
     event.respondWith(networkFirstStrategy(request));
