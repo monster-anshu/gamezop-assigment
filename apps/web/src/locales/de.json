@@ -1,22 +1,22 @@
 {
   "Header": {
     "search": {
-      "placeholder": "Search for games"
+      "placeholder": "Nach Spielen suchen"
     }
   },
   "GameCarousel": {
-    "view-all": "View all"
+    "view-all": "Alle ansehen"
   },
   "Installation": {
     "pwa": {
-      "title": "Add To Homescreen",
-      "subTitle": "Play Directly from homescreen",
-      "buttonLabel": "Add now"
+      "title": "Zum Startbildschirm hinzufügen",
+      "subTitle": "Direkt vom Startbildschirm spielen",
+      "buttonLabel": "Jetzt hinzufügen"
     },
     "notification": {
-      "title": "Allow Notifications",
-      "subTitle": "Stay updated with latest games",
-      "buttonLabel": "Allow"
+      "title": "Benachrichtigungen erlauben",
+      "subTitle": "Bleibe mit den neuesten Spielen auf dem Laufenden",
+      "buttonLabel": "Erlauben"
     }
   }
 }

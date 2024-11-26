@@ -1,0 +1,22 @@
+{
+  "Header": {
+    "search": {
+      "placeholder": "खेलों के लिए खोजें"
+    }
+  },
+  "GameCarousel": {
+    "view-all": "सभी देखें"
+  },
+  "Installation": {
+    "pwa": {
+      "title": "होमस्क्रीन पर जोड़ें",
+      "subTitle": "सीधे होमस्क्रीन से खेलें",
+      "buttonLabel": "अभी जोड़ें"
+    },
+    "notification": {
+      "title": "सूचनाएं अनुमति दें",
+      "subTitle": "नवीनतम खेलों के साथ अपडेट रहें",
+      "buttonLabel": "अनुमति दें"
+    }
+  }
+}
