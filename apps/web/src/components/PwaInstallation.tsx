@@ -54,16 +54,6 @@ const PwaInstallation: FC<IPwaInstallationProps> = () => {
         aspectRatio,
       }}
     >
-      <div className="absolute left-4 top-4 text-white md:left-10 md:top-10">
-        <p className="font-bold md:text-3xl">{t("title")}</p>
-        <p className="font-medium md:text-2xl">{t("subTitle")}</p>
-        <button
-          onClick={handleClick}
-          className="mt-5 rounded-3xl bg-yellow-300 px-6 py-1 font-bold text-orange-600 md:px-8 md:text-xl"
-        >
-          {t("buttonLabel")}
-        </button>
-      </div>
       <video
         poster="/images/a2hs-bg.png"
         className="w-full"
@@ -77,6 +67,16 @@ const PwaInstallation: FC<IPwaInstallationProps> = () => {
       >
         <source src="/videos/a2hs-video.mp4" type="video/mp4" />
       </video>
+      <div className="absolute left-4 top-4 text-white md:left-10 md:top-10">
+        <p className="font-bold md:text-3xl">{t("title")}</p>
+        <p className="font-medium md:text-2xl">{t("subTitle")}</p>
+        <button
+          onClick={handleClick}
+          className="mt-5 rounded-3xl bg-yellow-300 px-6 py-1 font-bold text-orange-600 md:px-8 md:text-xl"
+        >
+          {t("buttonLabel")}
+        </button>
+      </div>
     </div>
   );
 };
