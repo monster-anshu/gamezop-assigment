@@ -1,11 +1,13 @@
 import { Game } from "@web-types/game";
 import sampledata from "./sample.json";
+import { client } from "./client";
 
 export class GameApi {
   static async withCategories() {
+    const res = await client.get<GamesResponse>("/games?id=peSLSV");
     const gameCatgoryRecord: Record<string, Game[]> = {};
 
-    for (const game of sampledata.games) {
+    for (const game of res.data.games) {
       const category = game.categories.en.at(0);
       if (!category) {
         continue;
@@ -21,9 +23,11 @@ export class GameApi {
   }
 
   static async heroImages() {
+    const res = await client.get<GamesResponse>("/games?id=peSLSV");
+
     const set = new Set<string>();
 
-    for (const game of sampledata.games) {
+    for (const game of res.data.games) {
       if (set.size >= 12) {
         break;
       }
@@ -35,3 +39,5 @@ export class GameApi {
 
   static getGameForCatgory(category: string) {}
 }
+
+type GamesResponse = typeof sampledata;
