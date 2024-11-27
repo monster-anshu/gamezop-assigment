@@ -48,15 +48,10 @@ const PwaInstallation: FC<IPwaInstallationProps> = () => {
   }, []);
 
   return (
-    <div
-      className="relative h-32 overflow-hidden rounded-2xl md:h-64"
-      style={{
-        aspectRatio,
-      }}
-    >
+    <div className="relative aspect-video h-36 w-[340px] overflow-hidden rounded-2xl md:h-64 md:w-[650px]">
       <video
         poster="/images/a2hs-bg.png"
-        className="w-full"
+        className="absolute left-0 top-0 h-full w-full object-cover"
         autoPlay
         playsInline
         loop
@@ -67,12 +62,12 @@ const PwaInstallation: FC<IPwaInstallationProps> = () => {
       >
         <source src="/videos/a2hs-video.mp4" type="video/mp4" />
       </video>
-      <div className="absolute left-4 top-4 text-white md:left-10 md:top-10">
+      <div className="relative z-[1] pl-6 pt-4 text-white md:pl-10 md:pt-10">
         <p className="font-bold md:text-3xl">{t("title")}</p>
-        <p className="font-medium md:text-2xl">{t("subTitle")}</p>
+        <p className="text-sm font-medium md:text-2xl">{t("subTitle")}</p>
         <button
           onClick={handleClick}
-          className="mt-5 rounded-3xl bg-yellow-300 px-6 py-1 font-bold text-orange-600 md:px-8 md:text-xl"
+          className="mt-3 rounded-3xl bg-yellow-300 px-4 py-1 text-sm font-bold text-orange-600 md:mt-5 md:px-8 md:text-xl"
         >
           {t("buttonLabel")}
         </button>

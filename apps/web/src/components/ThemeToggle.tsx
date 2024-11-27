@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { CiDark, CiLight } from "react-icons/ci";
 
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false);
@@ -15,13 +16,19 @@ const ThemeSwitch = () => {
     return null;
   }
   return (
-    <select
-      value={nextTheme.theme}
-      onChange={(e) => nextTheme.setTheme(e.target.value)}
+    <button
+      onClick={() =>
+        nextTheme.setTheme(
+          nextTheme.resolvedTheme === "dark" ? "light" : "dark"
+        )
+      }
     >
-      <option value="dark">Dark</option>
-      <option value="light">Light</option>
-    </select>
+      {nextTheme.resolvedTheme === "light" ? (
+        <CiLight size={20} />
+      ) : (
+        <CiDark size={20} />
+      )}
+    </button>
   );
 };
 
