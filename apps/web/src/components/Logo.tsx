@@ -1,6 +1,5 @@
 "use client";
 import { LOGO } from "@web-const/images";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import React, { FC, useEffect, useState } from "react";
 
@@ -24,16 +23,37 @@ const config = {
 };
 
 const Logo: FC<ILogoProps> = ({ size = "md" }) => {
-  const { resolvedTheme } = useTheme();
-  const [isMounted, setIsMounted] = useState(false);
+  const [isLightTheme, setIsLightTheme] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    const element = document.querySelector("html");
+
+    if (!element) return;
+
+    setIsLightTheme(!element.classList.contains("dark"));
+
+    // Create a MutationObserver instance
+    const observer = new MutationObserver((mutationsList) => {
+      for (const mutation of mutationsList) {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "class"
+        ) {
+          setIsLightTheme(!element.classList.contains("dark"));
+        }
+      }
+    });
+
+    observer.observe(element, { attributes: true, attributeFilter: ["class"] });
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (
     <Image
-      src={isMounted && resolvedTheme === "light" ? LOGO.light : LOGO.dark}
+      src={isLightTheme ? LOGO.light : LOGO.dark}
       alt="Gamezop"
       priority
       suppressHydrationWarning

@@ -1,33 +1,21 @@
 "use client";
+import { setTheme } from "@web-utils/theme-action";
 import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
 import { CiDark, CiLight } from "react-icons/ci";
 
-const ThemeSwitch = () => {
-  const [mounted, setMounted] = useState(false);
-  const nextTheme = useTheme();
+type IThemeSwitchProps = {
+  isLightTheme: boolean;
+};
 
-  // useEffect only runs on the client, so now we can safely show the UI
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+const ThemeSwitch: React.FC<IThemeSwitchProps> = ({ isLightTheme }) => {
+  const handleClick = async () => {
+    const theme = isLightTheme ? "dark" : "light";
+    await setTheme(theme);
+  };
 
-  if (!mounted) {
-    return null;
-  }
   return (
-    <button
-      onClick={() =>
-        nextTheme.setTheme(
-          nextTheme.resolvedTheme === "dark" ? "light" : "dark"
-        )
-      }
-    >
-      {nextTheme.resolvedTheme === "light" ? (
-        <CiLight size={20} />
-      ) : (
-        <CiDark size={20} />
-      )}
+    <button onClick={handleClick}>
+      {isLightTheme ? <CiLight size={20} /> : <CiDark size={20} />}
     </button>
   );
 };
