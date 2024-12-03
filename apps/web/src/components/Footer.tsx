@@ -7,9 +7,7 @@ import Logo from "./Logo";
 import Separator from "@repo/ui/separator";
 import Link from "next/link";
 
-type IFooterProps = {
-  isLightTheme: boolean;
-};
+type IFooterProps = {};
 
 const linkes = [
   {
@@ -34,7 +32,7 @@ const linkes = [
   },
 ];
 
-const Footer: FC<IFooterProps> = ({ isLightTheme }) => {
+const Footer: FC<IFooterProps> = () => {
   return (
     <footer className="bg-footer py-6">
       <div className="container">
@@ -43,7 +41,7 @@ const Footer: FC<IFooterProps> = ({ isLightTheme }) => {
             <Logo size="sm" />
           </div>
           <div className="flex gap-2">
-            <ThemeToggle isLightTheme={isLightTheme} />
+            <ThemeToggle />
             <Separator />
             <LanguageSelector />
           </div>

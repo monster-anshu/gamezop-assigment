@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ThemeProvider } from "@web-providers/ThemeProvider";
 import Footer from "@web-components/Footer";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import Header from "@web-components/Header";
-import { isLightTheme } from "@web-utils/theme";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,22 +30,18 @@ export default async function RootLayout({
 }>) {
   const locale = await getLocale();
   const messages = await getMessages();
-  const isLight = await isLightTheme();
+
   return (
-    <html
-      lang={locale}
-      className={isLight ? "light" : "dark"}
-      style={{
-        colorScheme: isLight ? "light" : "dark",
-      }}
-    >
+    <html lang={locale} suppressHydrationWarning>
       <head />
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <NextIntlClientProvider messages={messages}>
-          <Header />
-          {children}
-          <Footer isLightTheme={isLight} />
-        </NextIntlClientProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <NextIntlClientProvider messages={messages}>
+            <Header />
+            {children}
+            <Footer />
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

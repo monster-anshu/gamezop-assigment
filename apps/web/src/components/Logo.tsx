@@ -1,5 +1,6 @@
 "use client";
 import { LOGO } from "@web-const/images";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import React, { FC, useEffect, useState } from "react";
@@ -25,56 +26,26 @@ const config = {
 };
 
 const Logo: FC<ILogoProps> = ({ size = "md", disableLink }) => {
-  const [isLightTheme, setIsLightTheme] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    const element = document.querySelector("html");
-
-    if (!element) return;
-
-    setIsLightTheme(!element.classList.contains("dark"));
-
-    // Create a MutationObserver instance
-    const observer = new MutationObserver((mutationsList) => {
-      for (const mutation of mutationsList) {
-        if (
-          mutation.type === "attributes" &&
-          mutation.attributeName === "class"
-        ) {
-          setIsLightTheme(!element.classList.contains("dark"));
-        }
-      }
-    });
-
-    observer.observe(element, { attributes: true, attributeFilter: ["class"] });
-
-    return () => {
-      observer.disconnect();
-    };
+    setIsMounted(true);
   }, []);
 
-  if (disableLink)
-    return (
-      <Image
-        src={isLightTheme ? LOGO.light : LOGO.dark}
-        alt="Gamezop"
-        priority
-        suppressHydrationWarning
-        {...config[size]}
-      />
-    );
-
-  return (
-    <Link href={"/"}>
-      <Image
-        src={isLightTheme ? LOGO.light : LOGO.dark}
-        alt="Gamezop"
-        priority
-        suppressHydrationWarning
-        {...config[size]}
-      />
-    </Link>
+  const ImageComponent = (
+    <Image
+      src={isMounted && resolvedTheme === "light" ? LOGO.light : LOGO.dark}
+      alt="Gamezop"
+      priority
+      suppressHydrationWarning
+      {...config[size]}
+    />
   );
+
+  if (disableLink) return ImageComponent;
+
+  return <Link href={"/"}>{ImageComponent}</Link>;
 };
 
 export default Logo;
