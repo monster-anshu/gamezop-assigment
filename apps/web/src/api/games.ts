@@ -16,6 +16,7 @@ export class GameApi {
       gameCatgoryRecord[category].push({
         image: game.assets.square,
         name: game.name.en,
+        id: game.code,
       });
     }
 
@@ -37,7 +38,10 @@ export class GameApi {
     return Array.from(set);
   }
 
-  static getGameForCatgory(category: string) {}
+  static async getGameForCatgory(category: string) {
+    const games = await this.withCategories();
+    return games[category] || [];
+  }
 }
 
 type GamesResponse = typeof sampledata;

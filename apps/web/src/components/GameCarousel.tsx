@@ -6,6 +6,8 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import Carousel from "./Carousel";
 import { MdOutlineNavigateNext } from "react-icons/md";
+import Link from "next/link";
+import GameCard from "./GameCard";
 
 type IGameCarouselProps = {
   games: Game[];
@@ -23,7 +25,10 @@ const GameCarousel: FC<IGameCarouselProps> = ({ category, games }) => {
             <p>{category}</p>
           </div>
           <div>
-            <div className="flex items-center gap-2 font-semibold uppercase md:text-xl">
+            <Link
+              href={`/category/${category}`}
+              className="flex items-center gap-2 font-semibold uppercase md:text-xl"
+            >
               <p className="text-primary dark:text-foreground">
                 {t("view-all")}
               </p>
@@ -33,27 +38,14 @@ const GameCarousel: FC<IGameCarouselProps> = ({ category, games }) => {
                   className="font-medium text-black"
                 />
               </button>
-            </div>
+            </Link>
           </div>
         </div>
 
         <div>
           <Carousel>
             {games.map((game, index) => {
-              return (
-                <div className="relative w-40" key={index}>
-                  <Image
-                    src={game.image}
-                    alt={game.name}
-                    width={176}
-                    height={176}
-                    className="mx-auto h-40 w-40 rounded-2xl md:h-44 md:w-44"
-                  />
-                  <p className="mt-2 line-clamp-1 text-center text-lg font-medium">
-                    {game.name}
-                  </p>
-                </div>
-              );
+              return <GameCard game={game} key={game.id} />;
             })}
           </Carousel>
         </div>

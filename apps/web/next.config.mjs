@@ -7,7 +7,14 @@ const apiHost = "https://pub.gamezop.com/v3";
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "static.gamezop.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
   rewrites: async () => {
     return [

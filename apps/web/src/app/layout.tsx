@@ -31,7 +31,6 @@ export default async function RootLayout({
   const locale = await getLocale();
   const messages = await getMessages();
   const isLight = await isLightTheme();
-
   return (
     <html
       lang={locale}

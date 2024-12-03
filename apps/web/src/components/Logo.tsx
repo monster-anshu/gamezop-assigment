@@ -1,10 +1,12 @@
 "use client";
 import { LOGO } from "@web-const/images";
 import Image from "next/image";
+import Link from "next/link";
 import React, { FC, useEffect, useState } from "react";
 
 type ILogoProps = {
   size?: "sm" | "md" | "lg";
+  disableLink?: boolean;
 };
 
 const config = {
@@ -22,7 +24,7 @@ const config = {
   },
 };
 
-const Logo: FC<ILogoProps> = ({ size = "md" }) => {
+const Logo: FC<ILogoProps> = ({ size = "md", disableLink }) => {
   const [isLightTheme, setIsLightTheme] = useState(false);
 
   useEffect(() => {
@@ -51,14 +53,27 @@ const Logo: FC<ILogoProps> = ({ size = "md" }) => {
     };
   }, []);
 
+  if (disableLink)
+    return (
+      <Image
+        src={isLightTheme ? LOGO.light : LOGO.dark}
+        alt="Gamezop"
+        priority
+        suppressHydrationWarning
+        {...config[size]}
+      />
+    );
+
   return (
-    <Image
-      src={isLightTheme ? LOGO.light : LOGO.dark}
-      alt="Gamezop"
-      priority
-      suppressHydrationWarning
-      {...config[size]}
-    />
+    <Link href={"/"}>
+      <Image
+        src={isLightTheme ? LOGO.light : LOGO.dark}
+        alt="Gamezop"
+        priority
+        suppressHydrationWarning
+        {...config[size]}
+      />
+    </Link>
   );
 };
 
