@@ -3,6 +3,9 @@ import GameCard from "@web-components/GameCard";
 import { getIconForCategory } from "@web-utils/icon";
 import React, { FC } from "react";
 
+export const dynamicParams = false;
+export const revalidate = 3600;
+
 type ICategoryPageProps = {
   params: Promise<{
     category: string;
