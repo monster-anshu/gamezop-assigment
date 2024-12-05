@@ -56,11 +56,13 @@ const SaerchDropdown: FC<ISaerchDropdownProps> = ({ onHide }) => {
           <RxCross2 size={16} />
         </button>
       </div>
-      <div className="bg-primary absolute left-0 right-0 top-full z-10 max-h-96 translate-y-2 overflow-auto rounded-lg border py-2 shadow">
-        {games.map((game) => {
-          return <SearchGamecard key={game.id} game={game} />;
-        })}
-      </div>
+      {games.length > 0 && (
+        <div className="bg-primary absolute left-0 right-0 top-full z-10 max-h-96 translate-y-2 overflow-auto rounded-lg border py-2 shadow">
+          {games.map((game) => {
+            return <SearchGamecard key={game.id} game={game} />;
+          })}
+        </div>
+      )}
     </div>
   );
 };
