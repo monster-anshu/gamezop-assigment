@@ -23,8 +23,6 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
 };
 
-export const dynamic = "force-static";
-
 export default async function RootLayout({
   children,
 }: Readonly<{
