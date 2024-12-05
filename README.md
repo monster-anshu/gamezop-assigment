@@ -63,3 +63,21 @@ pnpm run dev --filter=web
 
 The main application is deployed on Vercel and can be accessed here:  
 [https://gamezop.himanshu-gunwant.com](https://gamezop.himanshu-gunwant.com)
+
+### Screenshots
+
+#### Home screen
+
+![Home Screen](/public/home-screen.png)
+
+#### Category screen
+
+![Home Screen](/public/category-screen.png)
+
+#### Search screen
+
+![Home Screen](/public/search-screen.png)
+
+### Limitations
+
+As the only api provided is to fetch games other functionality is implemented on data provided from that api itself and adding filters logic in the client and server code.
