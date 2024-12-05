@@ -32,7 +32,10 @@ const GameCarousel: FC<IGameCarouselProps> = ({ category, games }) => {
               <p className="text-primary dark:text-foreground">
                 {t("view-all")}
               </p>
-              <button className="rounded-full bg-yellow-300 p-1">
+              <button
+                className="rounded-full bg-yellow-300 p-1"
+                aria-label={t("view-all")}
+              >
                 <MdOutlineNavigateNext
                   size={20}
                   className="font-medium text-black"
