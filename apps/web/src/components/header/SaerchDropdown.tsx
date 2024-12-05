@@ -20,7 +20,7 @@ const SaerchDropdown: FC<ISaerchDropdownProps> = ({ onHide }) => {
 
   const debouncedSearch = useMemo(() => {
     return debounce(async (query: string) => {
-      if (query.length < 2) {
+      if (query.length < 1) {
         setGames([]);
         return;
       }

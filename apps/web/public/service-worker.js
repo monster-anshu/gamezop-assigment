@@ -86,6 +86,13 @@ async function cacheFirstStrategy(request) {
     const cachedResponse = await cache.match(request);
 
     if (cachedResponse) {
+      fetch(request).then(async (networkResponse) => {
+        if (networkResponse.ok) {
+          console.log("Network response was ok, updating cache");
+          const responseClone = networkResponse.clone();
+          await cache.put(request, responseClone);
+        }
+      });
       return cachedResponse;
     }
 
@@ -101,7 +108,7 @@ async function cacheFirstStrategy(request) {
 async function networkFirstStrategy(request) {
   try {
     const networkResponse = await fetch(request);
-    console.log(networkResponse.ok);
+
     if (networkResponse.ok) {
       const responseClone = networkResponse.clone();
       const responseData = await responseClone.json();
@@ -138,15 +145,17 @@ async function dynamicCaching(request) {
 }
 
 self.addEventListener("fetch", (event) => {
-  return;
   const { request } = event;
-  event.respondWith(dynamicCaching(request));
   const url = new URL(request.url);
+
   if (url.pathname.startsWith("/api")) {
-    event.respondWith(networkFirstStrategy(request));
-  } else if (event.request.mode === "navigate") {
     event.respondWith(cacheFirstStrategy(request));
-  } else {
-    event.respondWith(dynamicCaching(request));
+    return;
   }
+
+  //  else if (event.request.mode === "navigate") {
+  //   event.respondWith(cacheFirstStrategy(request));
+  // } else {
+  //   event.respondWith(dynamicCaching(request));
+  // }
 });

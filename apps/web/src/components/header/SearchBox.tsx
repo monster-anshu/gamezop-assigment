@@ -17,6 +17,16 @@ type ISearchBoxProps = {
 const SearchBox: FC<ISearchBoxProps> = ({ isMobile }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const SearchComponent = (
+    <button
+      className="bg-primary rounded-full p-2"
+      onClick={() => setIsOpen((curr) => !curr)}
+      aria-label="Search"
+    >
+      <CiSearch size={20} className="text-background dark:text-foreground" />
+    </button>
+  );
+
   return (
     <div
       className={twMerge(
@@ -25,20 +35,11 @@ const SearchBox: FC<ISearchBoxProps> = ({ isMobile }) => {
       )}
     >
       {!isMobile && <Separator />}
-      <React.Suspense fallback={null}>
+      <React.Suspense fallback={SearchComponent}>
         {isOpen ? (
           <SearchDropDown onHide={() => setIsOpen(false)} />
         ) : (
-          <button
-            className="bg-primary rounded-full p-2"
-            onClick={() => setIsOpen((curr) => !curr)}
-            aria-label="Search"
-          >
-            <CiSearch
-              size={20}
-              className="text-background dark:text-foreground"
-            />
-          </button>
+          SearchComponent
         )}
       </React.Suspense>
 
