@@ -4,8 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@web-providers/ThemeProvider";
 import Footer from "@web-components/Footer";
 import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages } from "next-intl/server";
 import Header from "@web-components/Header";
+import { getMessages } from "@web-i18n";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,8 +28,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const locale = await getLocale();
-  const messages = await getMessages();
+  const { locale, messages } = await getMessages();
 
   return (
     <html lang={locale} suppressHydrationWarning>
