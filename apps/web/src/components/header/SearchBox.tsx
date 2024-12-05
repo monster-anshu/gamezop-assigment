@@ -32,6 +32,7 @@ const SearchBox: FC<ISearchBoxProps> = ({ isMobile }) => {
           <button
             className="bg-primary rounded-full p-2"
             onClick={() => setIsOpen((curr) => !curr)}
+            aria-label="Search"
           >
             <CiSearch
               size={20}

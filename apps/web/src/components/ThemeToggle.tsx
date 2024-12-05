@@ -22,6 +22,7 @@ const ThemeSwitch = () => {
           nextTheme.resolvedTheme === "dark" ? "light" : "dark"
         )
       }
+      aria-label="Toggle dark mode"
     >
       {nextTheme.resolvedTheme === "light" ? (
         <CiLight size={20} />

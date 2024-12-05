@@ -43,6 +43,7 @@ const NextButton = () => {
         <button
           className="absolute left-2 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-white p-2 md:block"
           onClick={() => swiper.slideTo(swiper.activeIndex - 1)}
+          aria-label="Previous"
         >
           <MdOutlineNavigateBefore
             size={22}
@@ -54,6 +55,7 @@ const NextButton = () => {
         <button
           className="absolute right-2 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-white p-2 md:block"
           onClick={() => swiper.slideTo(swiper.activeIndex + 1)}
+          aria-label="Next"
         >
           <MdOutlineNavigateNext size={22} className="font-medium text-black" />
         </button>
