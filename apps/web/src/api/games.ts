@@ -17,6 +17,7 @@ export class GameApi {
         image: game.assets.square,
         name: game.name.en,
         id: game.code,
+        category: game.categories.en.at(0),
       });
     }
 
@@ -41,6 +42,23 @@ export class GameApi {
   static async getGameForCatgory(category: string) {
     const games = await this.withCategories();
     return games[category] || [];
+  }
+
+  static async search(query: string) {
+    const res = await client.get<GamesResponse>("/games?id=peSLSV");
+    return res.data.games
+      .filter((game) => {
+        const name = game.name.en.toLowerCase();
+        return name.includes(query.toLowerCase());
+      })
+      .map((game) => {
+        return {
+          id: game.code,
+          image: game.assets.square,
+          name: game.name.en,
+          category: game.categories.en.at(0),
+        } as Game;
+      });
   }
 }
 
